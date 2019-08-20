@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <h1> Hi, {{ current_user.username.capitalize() }}</h1>
+<div class="container">
+  <div class="row">
+
+    <div class="col">
+      <ul>
+        {% for link in bbc_urls %}
+        <li>
+            <a href="{{ link }}" data-toggle="tooltip" target="_blank" 
+                data-placement="bottom" title="{{ link }}">
+                {{ link|truncate(45)}}
+            </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="col">
+        <ul>
+        {% for key, value in link_dict.items() %}
+        <li>
+            <a href="{{ key }}" data-toggle="tooltip" target="_blank" 
+                data-placement="bottom" title="{{ value }}">
+                {{ key|truncate(45) }}
+            </a>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col">
+      <ul>
+        {% for k, v in reuter_dict.items() %}
+        <li>
+            <a href="{{ k }}" data-toggle="tooltip" target="_blank" 
+                data-placement="bottom" title="{{ v }}">
+                {{ k|truncate(45) }}
+            </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    
+  </div>
+</div>
+{% endblock %}
